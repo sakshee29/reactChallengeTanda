@@ -1,18 +1,28 @@
 import React from "react";
 
-function Login(){
+function Signup(){
     return(
         <div>
             <a href="#"><h1>Adnat</h1></a>
-            <h2>Login</h2>
+            <h2>Signup</h2>
             <form>
             <label className='formLabels'>
-                Email: 
+                Name 
+            </label>
+            <input type="text" name="name" />
+
+            <label className='formLabels'>
+                Email 
             </label>
             <input type="text" name="email" />
 
             <label className='formLabels'>
-                Password:
+                Password<br></br>
+                (6 characters minimum)
+            </label>
+            <input type="password" name="password" />
+            <label className='formLabels'>
+                Password confirmation
             </label>
             <input type="password" name="password" />
             <br></br>
@@ -26,4 +36,4 @@ function Login(){
     )
 }
 
-export default Login;
+export default Signup;
