@@ -30,8 +30,6 @@ function Signup(){
             </form>
 
             <a href="#">Signup</a><br></br>
-            <a href="#">Forgot your Password?</a>
-
         </div>
     )
 }

@@ -1,4 +1,5 @@
 const express = require("express");
+var request = require("request");
 const cors = require('cors')
 const bodyParser = require("body-parser");
 const authRouter = require("./router/auth");
@@ -14,9 +15,7 @@ app.use("/organisations", organisationsRouter);
 app.use("/shifts", shiftsRouter);
 app.use("/users", usersRouter);
 
-// app.get("/", (req, res) => {
-//   res.render("./frontEnd/index");
-// });
+
 
 app.listen(3001, () => {
   console.log("Server running on port 3001");
