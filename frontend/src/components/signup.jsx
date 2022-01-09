@@ -1,6 +1,12 @@
 import React from "react";
 
+
 function Signup(){
+
+    function recordSignup(){
+        console.log("Button Clicked!!!!!");
+    }
+
     return(
         <div>
             <a href="#"><h1>Adnat</h1></a>
@@ -26,10 +32,10 @@ function Signup(){
             </label>
             <input type="password" name="password" />
             <br></br>
-            <input type="submit" value="Login" />
+            <button onClick={recordSignup}>Signup</button>
             </form>
 
-            <a href="#">Signup</a><br></br>
+            <a href="#">Login</a><br></br>
         </div>
     )
 }
