@@ -1,7 +1,7 @@
 import React from "react";
 import {useState, useEffect} from "react";
 
-const URL = "localhost:3001";
+const URL = "http://127.0.0.1:3001";
 
 function Signup(){
 
