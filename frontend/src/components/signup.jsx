@@ -3,8 +3,11 @@ import {useState, useEffect} from "react";
 
 const URL = "http://127.0.0.1:3001";
 
-function Signup(){
 
+
+function Signup(){
+    const [sessionId, setsessionId] = useState("");
+    const[error, setError] = useState("");
     const[name, setName] = useState("");
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
@@ -19,7 +22,15 @@ function Signup(){
             body: JSON.stringify({name:`${name}`, email:`${email}`, password:`${password}`, passwordConfirmation:`${passConfirm}`})
         })
         .then((res) => res.json())
-        .then((res) => {console.log(res)})
+        .then((res) => {
+            console.log(res);
+            if(res.error){
+                setError(res.error);
+            }
+            if(res.sessionId){
+                setsessionId(res.sessionId);
+            }
+        })
         .catch((error)=> console.log("Error",error))
     )}
 
@@ -28,6 +39,8 @@ function Signup(){
         <div>
             <a href="#"><h1>Adnat</h1></a>
             <h2>Signup</h2>
+            <p>The Error is:- {error}</p>
+            <p>The Id is: {sessionId}</p>
             <form>
             <label className='formLabels'>
                 Name 
