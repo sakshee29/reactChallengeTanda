@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import {useState, useEffect} from "react";
 
 const URL = "http://127.0.0.1:3001";
@@ -13,7 +14,7 @@ function Signup(){
     const[password, setPassword] = useState("");
     const[passConfirm, setPassConfirm] = useState("");
     
-    //FIXME: Page refreshes instantly. Errors once printed out disappears.
+
     function registerUser(){
         const url = `${URL}/auth/signup`
 
@@ -102,7 +103,8 @@ function Signup(){
             </form>
 
             <button onClick={registerUser}>Signup</button>
-            <a href="#">Login</a><br></br>
+            <br></br>
+            <a href="">Login</a>
         </div>
     )
 }
