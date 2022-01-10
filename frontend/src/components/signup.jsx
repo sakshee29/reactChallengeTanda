@@ -6,13 +6,14 @@ const URL = "http://127.0.0.1:3001";
 
 
 function Signup(){
-    const [sessionId, setsessionId] = useState("");
+    const[sessionId, setsessionId] = useState("");
     const[error, setError] = useState("");
     const[name, setName] = useState("");
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const[passConfirm, setPassConfirm] = useState("");
     
+    //FIXME: Page refreshes instantly. Errors once printed out disappears.
     function registerUser(){
         const url = `${URL}/auth/signup`
 
@@ -26,8 +27,10 @@ function Signup(){
             console.log(res);
             if(res.error){
                 setError(res.error);
+                setsessionId("");
             }
             if(res.sessionId){
+                setError("");
                 setsessionId(res.sessionId);
             }
         })
@@ -41,63 +44,64 @@ function Signup(){
             <h2>Signup</h2>
             <p>The Error is:- {error}</p>
             <p>The Id is: {sessionId}</p>
+
             <form>
-            <label className='formLabels'>
-                Name 
-            </label>
-            <input 
-            type="text" 
-            name="name"
-            id="name"
-            onChange={(event)=>{
-                const{value} = event.target;
-                setName(value);
-            }}
-            required />
+                <label className='formLabels'>
+                    Name 
+                </label>
+                <input 
+                type="text" 
+                name="name"
+                id="name"
+                onChange={(event)=>{
+                    const{value} = event.target;
+                    setName(value);
+                }}
+                required />
 
-            <label className='formLabels'>
-                Email 
-            </label>
-            <input 
-            type="text" 
-            name="email"
-            id="email"
-            onChange={(event)=>{
-                const{value} = event.target;
-                setEmail(value);
-            }}
-            required />
+                <label className='formLabels'>
+                    Email 
+                </label>
+                <input 
+                type="text" 
+                name="email"
+                id="email"
+                onChange={(event)=>{
+                    const{value} = event.target;
+                    setEmail(value);
+                }}
+                required />
 
-            <label className='formLabels'>
-                Password<br></br>
-                (6 characters minimum)
-            </label>
-            <input 
-            type="password"
-            name="password"
-            id="password"
-            onChange={(event)=>{
-                const{value} = event.target;
-                setPassword(value);
-            }}
-            required />
+                <label className='formLabels'>
+                    Password<br></br>
+                    (6 characters minimum)
+                </label>
+                <input 
+                type="password"
+                name="password"
+                id="password"
+                onChange={(event)=>{
+                    const{value} = event.target;
+                    setPassword(value);
+                }}
+                required />
 
-            <label className='formLabels'>
-                Password confirmation
-            </label>
-            <input
-             type="password" 
-             name="password"
-             id="passConfirm"
-             onChange={(event)=>{
-                 const{value} = event.target;
-                 setPassConfirm(value);
-             }}
-             required />
-            <br></br>
-            <button onClick={registerUser}>Signup</button>
+                <label className='formLabels'>
+                    Password confirmation
+                </label>
+                <input
+                type="password" 
+                name="password"
+                id="passConfirm"
+                onChange={(event)=>{
+                    const{value} = event.target;
+                    setPassConfirm(value);
+                }}
+                required />
+                <br></br> 
             </form>
 
+            <button onClick={registerUser}>Signup</button>
             <a href="#">Login</a><br></br>
         </div>
     )
