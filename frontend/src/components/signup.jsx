@@ -5,7 +5,6 @@ import {useState, useEffect} from "react";
 const URL = "http://127.0.0.1:3001";
 
 
-
 function Signup(){
     const[sessionId, setsessionId] = useState("");
     const[error, setError] = useState("");
@@ -15,7 +14,7 @@ function Signup(){
     const[passConfirm, setPassConfirm] = useState("");
     
 
-    function registerUser(){
+    function signup(){
         const url = `${URL}/auth/signup`
 
         return (fetch(url , {
@@ -102,7 +101,7 @@ function Signup(){
                 <br></br> 
             </form>
 
-            <button onClick={registerUser}>Signup</button>
+            <button onClick={signup}>Signup</button>
             <br></br>
             <a href="">Login</a>
         </div>
