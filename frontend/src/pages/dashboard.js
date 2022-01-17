@@ -9,6 +9,8 @@ function Dashboard(){
     const [username, setUserName] = useState("");
     const [organisationId, setOrganisationId] = useState("");
 
+    //FIXME: LOGOUT functionality. Page doesn't refresh when we logout 
+    //TODO: Add props like isloggedIn 
     function logout(){
         localStorage.removeItem("sessionId");
     }    
@@ -31,6 +33,7 @@ function Dashboard(){
         .then((res)=>{
             setUserName(res.name);
             setOrganisationId(res.organisationId);
+            // setOrganisationId("1")
             console.log("The response is:",res);
         })
         .catch((error)=> {console.log(`Errors: ${error}`)})
@@ -42,8 +45,11 @@ function Dashboard(){
 
     return(
         <div>
-        <h2>Hello {username}</h2>
+        <p>Logged in as {username}</p>
         <button onClick={logout}>Logout</button>
+        {organisationId!=null ? 
+            (<p>You are the member of {organisationId}</p>)
+            :(<p>You aren't a member of any organisation.<br></br> Join an existing one or create a new one.</p>)}
         </div>
     );
 }
