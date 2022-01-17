@@ -103,7 +103,7 @@ function Signup(){
 
             <button onClick={signup}>Signup</button>
             <br></br>
-            <a href="">Login</a>
+            <Link to="/login">Login</Link>
         </div>
     )
 }

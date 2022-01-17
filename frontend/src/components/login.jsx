@@ -1,5 +1,6 @@
 import React from "react";
 import {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
 
 const URL = "http://127.0.0.1:3001";
 
@@ -68,7 +69,7 @@ function Login(){
 
             <button onClick={login}>Login</button>
             <br></br>
-            <a href="#">Signup</a><br></br>
+            <Link to="/signup">Signup</Link><br></br>
             <a href="#">Forgot your Password?</a>
 
         </div>
