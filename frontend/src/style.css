@@ -22,3 +22,6 @@ input{
     left: 0;
 }
 
+.error{
+    color: red;
+}

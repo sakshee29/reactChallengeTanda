@@ -35,9 +35,8 @@ function Login(){
 
     return(
         <div>
-            <a href="#"><h1>Adnat</h1></a>
             <h2>Login</h2>
-            <p>The Error is:- {error}</p>
+            <p className="error">The Error is:- {error}</p>
             <p>The Id is: {sessionId}</p>
 
             <form>
