@@ -5,14 +5,13 @@ const URL = "http://127.0.0.1:3001";
 var sessionId = "";
 
 
-
 function Dashboard(){
     const [username, setUserName] = useState("");
     const [organisationId, setOrganisationId] = useState("");
 
     function logout(){
-        console.log("I want to logout")
-    }
+        localStorage.removeItem("sessionId");
+    }    
 
     function getUserDetails(){
         const url = `${URL}/users/me`;
@@ -40,7 +39,6 @@ function Dashboard(){
     useEffect(()=>{
         getUserDetails();
     })
-
 
     return(
         <div>
