@@ -28,6 +28,7 @@ function Login(){
             if(res.sessionId){
                 setError("");
                 setsessionId(res.sessionId);
+                localStorage.setItem("sessionId",res.sessionId)
             }
         })
         .catch((error)=> console.log("Error",error)))

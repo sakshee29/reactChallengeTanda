@@ -3,6 +3,7 @@ import Signup from './pages/signup';
 import Header from './components/Header';
 import './style.css';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
+import Dashboard from './pages/dashboard';
 
 /* NOTE: Style doesn't necessarily need to be imported in the login.jsx file*/
 
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path ="/signup" element={<Signup />} />
             <Route path ="/login" element={<Login />}/>
+            <Route path ="/dashboard" element={<Dashboard />}/>
           </Routes>
 
         </BrowserRouter>
