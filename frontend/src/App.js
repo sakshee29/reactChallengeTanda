@@ -1,9 +1,10 @@
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Header from './components/Header';
+import Dashboard from './pages/dashboard';
 import './style.css';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
-import Dashboard from './pages/dashboard';
+
 
 /* NOTE: Style doesn't necessarily need to be imported in the login.jsx file*/
 
