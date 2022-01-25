@@ -9,17 +9,16 @@ function Dashboard(props){
     const [username, setUserName] = useState("");
     const [organisationId, setOrganisationId] = useState("");
 
-    //FIXME: LOGOUT functionality. Page doesn't refresh when we logout 
-    //TODO: Add props like isloggedIn 
+   
     function logout(){
         localStorage.removeItem("sessionId");
-        props.setIsLoggedIn(false);
+        props.setIsLoggedIn(null);
     }    
 
     function createOrganisation(){
         console.log("Org Created!");
     }
-    
+
     function getUserDetails(){
         const url = `${URL}/users/me`;
         sessionId = localStorage.getItem("sessionId");

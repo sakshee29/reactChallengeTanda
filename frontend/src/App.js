@@ -5,26 +5,31 @@ import Dashboard from './pages/dashboard';
 import './style.css';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 /* NOTE: Style doesn't necessarily need to be imported in the login.jsx file*/
 
 function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(null);
+
+  useEffect(() => {
+    const loggedUser = localStorage.getItem('sessionId');
+    setLoggedIn(Boolean(loggedUser));
+  }, []);
 
   return (
     <div className="App">
         <BrowserRouter>
           <Header/>
           <Routes>
-            <Route path ="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn}/>} />
+            <Route path ="/signup" element={<Signup setIsLoggedIn={setLoggedIn}/>} />
             
-            {!isLoggedIn ? (
-              <Route exact path ="/" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
+            {isLoggedIn===null ? (
+              <Route exact path ="/" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setLoggedIn}/>}/>
             ): (
-              <Route exact path ="/" element={<Dashboard setIsLoggedIn={setIsLoggedIn} />}/>
+              <Route exact path ="/" element={<Dashboard setIsLoggedIn={setLoggedIn} />}/>
             )}
             
           </Routes>
