@@ -19,11 +19,12 @@ function App() {
         <BrowserRouter>
           <Header/>
           <Routes>
-            <Route path ="/signup" element={<Signup />} />
+            <Route path ="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn}/>} />
+            
             {!isLoggedIn ? (
-              <Route exact path ="/" element={<Login />}/>
+              <Route exact path ="/" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
             ): (
-              <Route exact path ="/" element={<Dashboard />}/>
+              <Route exact path ="/" element={<Dashboard setIsLoggedIn={setIsLoggedIn} />}/>
             )}
             
           </Routes>

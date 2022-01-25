@@ -5,7 +5,7 @@ import {useState, useEffect} from "react";
 const URL = "http://127.0.0.1:3001";
 
 
-function Signup(){
+function Signup(props){
     const[sessionId, setsessionId] = useState("");
     const[error, setError] = useState("");
     const[name, setName] = useState("");
@@ -43,6 +43,7 @@ function Signup(){
             <h2>Signup</h2>
             <p className="error">The Error is:- {error}</p>
             <p>The Id is: {sessionId}</p>
+            
 
             <form>
                 <label className='formLabels'>
@@ -102,7 +103,7 @@ function Signup(){
 
             <button onClick={signup}>Signup</button>
             <br></br>
-            <Link to="/login">Login</Link>
+            <Link to="/">Login</Link>
         </div>
     )
 }

@@ -5,7 +5,7 @@ const URL = "http://127.0.0.1:3001";
 var sessionId = "";
 
 
-function Dashboard(){
+function Dashboard(props){
     const [username, setUserName] = useState("");
     const [organisationId, setOrganisationId] = useState("");
 
@@ -13,6 +13,7 @@ function Dashboard(){
     //TODO: Add props like isloggedIn 
     function logout(){
         localStorage.removeItem("sessionId");
+        props.setIsLoggedIn(false);
     }    
 
     function getUserDetails(){

@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 const URL = "http://127.0.0.1:3001";
 
-function Login(){
+function Login(props){
     const[sessionId, setsessionId] = useState("");
     const[error, setError] = useState("");
     const[email, setEmail] = useState("");
@@ -28,7 +28,8 @@ function Login(){
             if(res.sessionId){
                 setError("");
                 setsessionId(res.sessionId);
-                localStorage.setItem("sessionId",res.sessionId)
+                localStorage.setItem("sessionId",res.sessionId);
+                props.setIsLoggedIn(true);
             }
         })
         .catch((error)=> console.log("Error",error)))
