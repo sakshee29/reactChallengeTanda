@@ -48,6 +48,7 @@ function Login(props){
                 <input 
                 type="text"
                 name="email" 
+                id="email"
                 onChange={(event)=>{
                     const{value} = event.target;
                     setEmail(value);
@@ -60,6 +61,7 @@ function Login(props){
                 <input 
                 type="password" 
                 name="password"
+                id="password"
                 onChange={(event)=>{
                     const{value} = event.target;
                     setPassword(value);

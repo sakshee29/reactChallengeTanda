@@ -16,6 +16,10 @@ function Dashboard(props){
         props.setIsLoggedIn(false);
     }    
 
+    function createOrganisation(){
+        console.log("Org Created!");
+    }
+    
     function getUserDetails(){
         const url = `${URL}/users/me`;
         sessionId = localStorage.getItem("sessionId");
@@ -46,11 +50,35 @@ function Dashboard(props){
 
     return(
         <div>
-        <p>Logged in as {username}</p>
-        <button onClick={logout}>Logout</button>
-        {organisationId!=null ? 
-            (<p>You are the member of {organisationId}</p>)
-            :(<p>You aren't a member of any organisation.<br></br> Join an existing one or create a new one.</p>)}
+            <p>Logged in as {username}</p>
+            <button onClick={logout}>Logout</button>
+            {organisationId!=null ? 
+                (<p>You are the member of {organisationId}</p>)
+                :(<p>You aren't a member of any organisation.<br></br> Join an existing one or create a new one.</p>)
+            }
+            <h2>Organisations</h2>
+            <h2>Create Organisation</h2>
+            <form>
+            <label>
+                Name:  
+                <input 
+                type="text" 
+                name="name"
+                id="orgName"
+                required />
+            </label>
+
+            <label>
+                Hourly rate: $
+                <input 
+                type="text" 
+                name="name"
+                id="orgRate"
+                required />
+            </label>
+            <button>Create and Join</button>
+        
+            </form>
         </div>
     );
 }
