@@ -104,7 +104,7 @@ function Dashboard(props){
     useEffect(()=>{
         getUserDetails();
         getOrganisations();
-    })
+    },[])
 
     return(
         <div>
@@ -116,7 +116,9 @@ function Dashboard(props){
             }
             <h2>Organisations</h2>
             <ul>
-                {organisations.map((org)=> (<li>{org.name}</li>))}
+                {organisations.map((org)=> (
+                    <li>{org.name} <button>Edit</button> <button>Join</button></li>
+                    ))}
             </ul>
             
             
