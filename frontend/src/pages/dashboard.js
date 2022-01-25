@@ -1,13 +1,14 @@
 import React from "react";
 import {useState, useEffect} from "react";
 
+
 const URL = "http://127.0.0.1:3001";
 var sessionId = "";
 
 
 function Dashboard(props){
     const [username, setUserName] = useState("");
-    const [organisationId, setOrganisationId] = useState("");
+    const [organisationId, setOrganisationId] = useState(null);
 
     const [orgName, setOrgName] = useState("");
     const [orgRate, setOrgRate] = useState(null);
@@ -59,6 +60,23 @@ function Dashboard(props){
         }
     }
 
+    function getOrganisations(){
+        const url = `${URL}/organisations`;
+        sessionId = localStorage.getItem("sessionId");
+        return(fetch(url,{
+                method:"GET",
+                headers: {'Authorization': `${sessionId}`, "Content-Type":"application/json"},
+            })
+            .then((res)=>res.json())
+            .then((data)=> {
+                console.log(data);
+                setOrganisations(data);
+            })
+            
+        )
+            
+    }
+
     function getUserDetails(){
         const url = `${URL}/users/me`;
         sessionId = localStorage.getItem("sessionId");
@@ -85,6 +103,7 @@ function Dashboard(props){
 
     useEffect(()=>{
         getUserDetails();
+        getOrganisations();
     })
 
     return(
@@ -96,6 +115,12 @@ function Dashboard(props){
                 :(<p>You aren't a member of any organisation.<br></br> Join an existing one or create a new one.</p>)
             }
             <h2>Organisations</h2>
+            <ul>
+                {organisations.map((org)=> (<li>{org.name}</li>))}
+            </ul>
+            
+            
+            
             <h2>Create Organisation</h2>
             <form>
             <label>
