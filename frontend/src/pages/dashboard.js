@@ -9,6 +9,9 @@ function Dashboard(props){
     const [username, setUserName] = useState("");
     const [organisationId, setOrganisationId] = useState("");
 
+    const [orgName, setOrgName] = useState("");
+    const [orgRate, setOrgRate] = useState(null);
+
    
     function logout(){
         localStorage.removeItem("sessionId");
@@ -16,7 +19,9 @@ function Dashboard(props){
     }    
 
     function createOrganisation(){
-        console.log("Org Created!");
+        if (orgRate!==null && orgName!==""){
+            console.log("Org Created!");
+        }
     }
 
     function getUserDetails(){
@@ -64,6 +69,10 @@ function Dashboard(props){
                 type="text" 
                 name="name"
                 id="orgName"
+                onChange={(event)=>{
+                    const{value} = event.target;
+                    setOrgName(value);
+                }}
                 required />
             </label>
 
@@ -73,9 +82,13 @@ function Dashboard(props){
                 type="text" 
                 name="name"
                 id="orgRate"
+                onChange={(event)=>{
+                    const{value} = event.target;
+                    setOrgRate(value);
+                }}
                 required />
             </label>
-            <button>Create and Join</button>
+            <button onClick={createOrganisation}>Create and Join</button>
         
             </form>
         </div>
