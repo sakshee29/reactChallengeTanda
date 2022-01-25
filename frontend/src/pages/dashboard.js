@@ -12,15 +12,50 @@ function Dashboard(props){
     const [orgName, setOrgName] = useState("");
     const [orgRate, setOrgRate] = useState(null);
 
+    const [organisations, setOrganisations] = useState([]);
    
     function logout(){
         localStorage.removeItem("sessionId");
         props.setIsLoggedIn(null);
+        // const url = `${URL}/auth/logout`;
+        // sessionId = localStorage.getItem("sessionId");
+        // const options = {
+        //     method: 'DELETE',
+        //     headers: {
+        //     'Authorization': `${sessionId}` ,
+        //     'Content-Type': 'application/json',
+        //     }
+        // };
+
+        // fetch(url,options)
+        // .then((res)=> res.json())
+        // .then((res)=> {
+        //     console.log(res);
+        //     localStorage.removeItem("sessionId");
+        //     props.setIsLoggedIn(null);
+        // })
+        // .catch((error)=> {console.log(`Errors: ${error}`)})
+        
     }    
 
     function createOrganisation(){
         if (orgRate!==null && orgName!==""){
-            console.log("Org Created!");
+            
+            const url = `${URL}/organisations/create_join`;
+            sessionId = localStorage.getItem("sessionId");
+
+            return (fetch(url,{
+                method: "POST",
+                headers: {'Authorization': `${sessionId}`, "Content-Type":"application/json"},
+                body: JSON.stringify({name:`${orgName}`, hourlyRate:orgRate})
+
+            })
+            .then((res)=> res.json())
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((errors)=> {console.log(`Errors: ${errors}`)})
+            )
         }
     }
 
@@ -37,7 +72,7 @@ function Dashboard(props){
             }
         };
 
-        fetch(url, options)
+        return(fetch(url, options)
         .then((res)=> res.json())
         .then((res)=>{
             setUserName(res.name);
@@ -45,7 +80,7 @@ function Dashboard(props){
             // setOrganisationId("1")
             console.log("The response is:",res);
         })
-        .catch((error)=> {console.log(`Errors: ${error}`)})
+        .catch((error)=> {console.log(`Errors: ${error}`)}))
     }
 
     useEffect(()=>{
@@ -88,9 +123,8 @@ function Dashboard(props){
                 }}
                 required />
             </label>
-            <button onClick={createOrganisation}>Create and Join</button>
-        
             </form>
+            <button onClick={createOrganisation}>Create and Join</button>
         </div>
     );
 }
