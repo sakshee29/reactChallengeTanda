@@ -16,6 +16,7 @@ function App() {
 
   useEffect(() => {
     const loggedUser = localStorage.getItem('sessionId');
+    // console.log(Boolean(loggedUser));
     setLoggedIn(Boolean(loggedUser));
   }, []);
 
@@ -26,7 +27,7 @@ function App() {
           <Routes>
             <Route path ="/signup" element={<Signup setIsLoggedIn={setLoggedIn}/>} />
             
-            {isLoggedIn===null ? (
+            {isLoggedIn===null|| isLoggedIn===false ? (
               <Route exact path ="/" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setLoggedIn}/>}/>
             ): (
               <Route exact path ="/" element={<Dashboard setIsLoggedIn={setLoggedIn} />}/>
