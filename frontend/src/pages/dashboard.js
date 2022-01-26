@@ -82,14 +82,16 @@ function Dashboard(props){
         )
     }
 
-    function joinOrg(orgId){
+    function joinOrg(e){
+        e.preventDefault();
+        const id = e.target.value;
         const url = `${URL}/organisations/join`;
         sessionId = localStorage.getItem("sessionId");
 
         return (fetch(url,{
             method: "POST",
             headers: {'Authorization': `${sessionId}`, "Content-Type":"application/json"},
-            body: JSON.stringify({"organisationId":2})
+            body: JSON.stringify({"organisationId":id})
 
         })
         .then((res)=> res.json())
@@ -144,7 +146,7 @@ function Dashboard(props){
                     <h2>Organisations</h2>
                     <ul>
                         {organisations.map((org)=> (
-                            <li>{org.name} <button>Edit</button> <button onClick={joinOrg}>Join</button></li>
+                            <li>{org.name} <button>Edit</button> <button value={org.id} onClick={joinOrg}>Join</button></li>
                         ))}
                     </ul>
             
