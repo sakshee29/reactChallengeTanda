@@ -35,3 +35,15 @@ label {
 .memberLinks{
     margin-right: 2%;
 }
+
+table{
+    border-collapse: collapse;
+    width: 80%;
+    
+}
+
+th,td{
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}

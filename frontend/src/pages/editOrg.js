@@ -82,13 +82,10 @@ export default function EditOrg(props){
         )
     }
 
-
-
     useEffect(()=>{
         getUserDetails();
         getOrganisations();
     })
-
 
     return(
         <div>
