@@ -3,6 +3,7 @@ import Signup from './pages/signup';
 import Header from './components/Header';
 import Dashboard from './pages/dashboard';
 import EditOrg from './pages/editOrg';
+import Shifts from './pages/shifts';
 import './style.css';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import React from 'react';
@@ -34,7 +35,7 @@ function App() {
           <Routes>
             <Route path ="/signup" element={<Signup setIsLoggedIn={setLoggedIn}/>} />
             <Route path ="organisations/edit" element={<EditOrg isLoggedIn={isLoggedIn} setIsLoggedIn={setLoggedIn}/>} />
-            
+            <Route path = "/shifts" element={<Shifts/>}/>
             {isLoggedIn===null|| isLoggedIn===false ? (
               <Route exact path ="/" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setLoggedIn}/>}/>
             ): (

@@ -82,6 +82,8 @@ export default function EditOrg(props){
         )
     }
 
+
+
     useEffect(()=>{
         getUserDetails();
         getOrganisations();
@@ -131,7 +133,7 @@ export default function EditOrg(props){
                         </label>
                         <button onClick={updateOrg}>Update</button> <br></br>
                     </form>
-                    <button>Delete Organisation</button>
+                    
                 </div>)}
         </div>
     )
