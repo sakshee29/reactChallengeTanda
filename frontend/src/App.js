@@ -7,12 +7,17 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import React from 'react';
 import { useState, useEffect } from "react";
 
+/**FIXME: When a person doesn't logout and when the server is started again either it 
+//doesn't show login page (due to sessionId error {sessionId doesn't match}) 
+or it shows the same person's homepage*/
+
 
 /* NOTE: Style doesn't necessarily need to be imported in the login.jsx file*/
 
 function App() {
 
   const [isLoggedIn, setLoggedIn] = useState(null);
+  // localStorage.removeItem("sessionId");
 
   useEffect(() => {
     const loggedUser = localStorage.getItem('sessionId');
