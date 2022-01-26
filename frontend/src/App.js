@@ -33,7 +33,7 @@ function App() {
           <Header/>
           <Routes>
             <Route path ="/signup" element={<Signup setIsLoggedIn={setLoggedIn}/>} />
-            <Route path ="organisations/edit" element={<EditOrg isLoggedIn={isLoggedIn}/>} />
+            <Route path ="organisations/edit" element={<EditOrg isLoggedIn={isLoggedIn} setIsLoggedIn={setLoggedIn}/>} />
             
             {isLoggedIn===null|| isLoggedIn===false ? (
               <Route exact path ="/" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setLoggedIn}/>}/>
