@@ -84,14 +84,15 @@ function Dashboard(props){
 
     function joinOrg(e){
         e.preventDefault();
-        const id = e.target.value;
+        const orgId = e.target.value; //get's the value from the button
+
         const url = `${URL}/organisations/join`;
         sessionId = localStorage.getItem("sessionId");
 
         return (fetch(url,{
             method: "POST",
             headers: {'Authorization': `${sessionId}`, "Content-Type":"application/json"},
-            body: JSON.stringify({"organisationId":id})
+            body: JSON.stringify({"organisationId":orgId})
 
         })
         .then((res)=> res.json())

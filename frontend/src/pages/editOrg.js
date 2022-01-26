@@ -113,7 +113,7 @@ export default function EditOrg(props){
                                 const{value} = event.target;
                                 setNewOrgName(value);
                             }}
-                             />
+                            />
                         </label>
 
                         <label>
