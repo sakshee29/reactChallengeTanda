@@ -10,16 +10,30 @@ export default function EditOrg(props){
     const [username, setUserName] = useState("");
     const [organisationId, setOrganisationId] = useState(null);
 
-    const [newOrgName, setNewOrgName] = useState("");
-    const [newOrgRate, setNewOrgRate] = useState(null);
+   
 
     const [organisations, setOrganisations] = useState([]);
     //Organisation Name for a particular user
     const [usersOrgName, setUsersOrgName] = useState("");
     const [usersOrgRate, setUsersOrgRate] = useState(null);
 
-    function updateOrg(){
+    const [newOrgName, setNewOrgName] = useState(usersOrgName);
+    const [newOrgRate, setNewOrgRate] = useState(usersOrgRate);
 
+    function updateOrg(){
+        const url = `${URL}/organisations/${organisationId}`;
+        sessionId = localStorage.getItem("sessionId");
+
+        return(fetch(url,{
+            method:"PUT",
+            headers: {'Authorization': `${sessionId}`, "Content-Type":"application/json"},
+            body: JSON.stringify({name:`${newOrgName}`, hourlyRate:newOrgRate})
+        })
+        .then((res)=> res.json())
+        .then((res)=> {
+            console.log(res);
+        })
+        )
     }
 
     function getUserDetails(){
@@ -64,7 +78,6 @@ export default function EditOrg(props){
                 setUsersOrgName(data[organisationId-1].name);
                 setUsersOrgRate(data[organisationId-1].hourlyRate);
                 console.log(data);
-            
             })
         )
     }
@@ -100,7 +113,7 @@ export default function EditOrg(props){
                                 const{value} = event.target;
                                 setNewOrgName(value);
                             }}
-                            required />
+                             />
                         </label>
 
                         <label>
@@ -114,7 +127,7 @@ export default function EditOrg(props){
                                 const{value} = event.target;
                                 setNewOrgRate(value);
                             }}
-                            required /> per hour
+                             /> per hour
                         </label>
                         <button onClick={updateOrg}>Update</button> <br></br>
                     </form>
