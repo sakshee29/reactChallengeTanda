@@ -15,7 +15,9 @@ function Dashboard(props){
     const [orgRate, setOrgRate] = useState(null);
 
     const [organisations, setOrganisations] = useState([]);
-    // const [isMember, setIsMember] = useState(false);
+
+    //Organisation Name for a particular user
+    const [usersOrgName, setUsersOrgName] = useState("");
    
     function logout(){
         localStorage.removeItem("sessionId");
@@ -56,9 +58,6 @@ function Dashboard(props){
             .then((res)=> res.json())
             .then((res) => {
                 console.log(res);
-                // if(!res.error){
-                //     setIsMember(true);
-                // }
             })
             .catch((errors)=> {console.log(`Errors: ${errors}`)})
             )
@@ -74,12 +73,13 @@ function Dashboard(props){
             })
             .then((res)=>res.json())
             .then((data)=> {
-                console.log(data);
+                
                 setOrganisations(data);
+                setUsersOrgName(data[organisationId-1].name);
+                console.log(data);
+            
             })
-            
         )
-            
     }
 
     function getUserDetails(){
@@ -108,62 +108,59 @@ function Dashboard(props){
     useEffect(()=>{
         getUserDetails();
         getOrganisations();
-    },[])
+    })
 
     return(
         <div>
             <p>Logged in as {username}</p>
             <button onClick={logout}>Logout</button>
 
-             
-                <div>
-                {organisationId!=null ? 
-                    (<OrgMember orgName={organisationId}/>)
-                    // (<p>You are the member of Organisation {organisationId}</p>)
-                    :
-                    (<div><p>You aren't a member of any organisation. Join an existing one or create a new one.</p>
-                
-                <h2>Organisations</h2>
-                <ol>
-                    {organisations.map((org)=> (
-                        <li>{org.name} <button>Edit</button> <button>Join</button></li>
-                    ))}
-                </ol>
-                
-                <h2>Create Organisation</h2>
-                <form>
-                <label>
-                    Name:  
-                    <input 
-                    type="text" 
-                    name="name"
-                    id="orgName"
-                    onChange={(event)=>{
-                        const{value} = event.target;
-                        setOrgName(value);
-                    }}
-                    required />
-                </label>
+            <div>
+            {organisationId!=null ? 
+                (<OrgMember orgName={usersOrgName}/>)
+                // (<p>You are the member of Organisation {organisationId}</p>)
+                :
+                (<div>
+                    <p>You aren't a member of any organisation. Join an existing one or create a new one.</p>
+                    <h2>Organisations</h2>
+                    <ol>
+                        {organisations.map((org)=> (
+                            <li>{org.name} <button>Edit</button> <button>Join</button></li>
+                        ))}
+                    </ol>
+            
+                    <h2>Create Organisation</h2>
+                    <form>
+                    <label>
+                        Name:  
+                        <input 
+                        type="text" 
+                        name="name"
+                        id="orgName"
+                        onChange={(event)=>{
+                            const{value} = event.target;
+                            setOrgName(value);
+                        }}
+                        required />
+                    </label>
 
-                <label>
-                    Hourly rate: $
-                    <input 
-                    type="text" 
-                    name="name"
-                    id="orgRate"
-                    onChange={(event)=>{
-                        const{value} = event.target;
-                        setOrgRate(value);
-                    }}
-                    required />
-                </label>
-                <button onClick={createOrganisation}>Create and Join</button> 
-                </form></div>)}
-                </div>
+                    <label>
+                        Hourly rate: $
+                        <input 
+                        type="text" 
+                        name="name"
+                        id="orgRate"
+                        onChange={(event)=>{
+                            const{value} = event.target;
+                            setOrgRate(value);
+                        }}
+                        required />
+                    </label>
+                    <button onClick={createOrganisation}>Create and Join</button> 
+                    </form>
+                </div>)}
             
-            
-            
-            
+            </div>
         </div>
     );
 }
