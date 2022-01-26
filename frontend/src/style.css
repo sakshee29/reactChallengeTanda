@@ -38,7 +38,7 @@ label {
 
 table{
     border-collapse: collapse;
-    width: 60%;
+    width: 80%;
     
 }
 
@@ -46,4 +46,17 @@ th,td{
     border: 1px solid black;
     text-align: left;
     padding: 8px;
+}
+
+#editButton,#leaveOrgButton{
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    /*input has OS specific font-family*/
+    color: rgb(0, 79, 153);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: medium;
+    
 }

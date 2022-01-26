@@ -147,7 +147,7 @@ function Dashboard(props){
                     <h2>Organisations</h2>
                     <ul>
                         {organisations.map((org)=> (
-                            <li>{org.name} <button>Edit</button> <button value={org.id} onClick={joinOrg}>Join</button></li>
+                            <li>{org.name}  <button id="editButton" value={org.id} onClick={joinOrg}>Join</button></li>
                         ))}
                     </ul>
             
