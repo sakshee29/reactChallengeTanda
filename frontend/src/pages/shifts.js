@@ -93,7 +93,20 @@ function Shifts(props){
                             <tr>
                                 <td>Ed</td>
                                 <td>today</td>
-                                <td>3:00pm </td>
+                                <td>3:00pm</td>
+                                <td>7:00pm</td>
+                                <td>30mins</td>
+                                <td>3.5hrs</td>
+                                <td>$100</td>
+                            </tr>
+                            <tr>
+                                <td>Ed</td>
+                                <td>today</td>
+                                <td>3:00pm</td>
+                                <td>7:00pm</td>
+                                <td>30mins</td>
+                                <td>3.5hrs</td>
+                                <td>$100</td>
                             </tr>
                         </tbody>
                     </table>
