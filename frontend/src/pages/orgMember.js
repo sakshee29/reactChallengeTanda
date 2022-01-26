@@ -26,7 +26,7 @@ function OrgMember(props){
         <div>
             <h2>{props.orgName}</h2>
             <Link className="memberLinks" to="/">View Shifts</Link>
-            <Link className="memberLinks" to="/">Edit</Link>
+            <Link className="memberLinks" to="/organisations/edit">Edit</Link>
             <button className="memberLinks" onClick={leaveOrg} >Leave</button>
             
         </div>

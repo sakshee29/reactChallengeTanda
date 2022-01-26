@@ -123,11 +123,11 @@ function Dashboard(props){
                 (<div>
                     <p>You aren't a member of any organisation. Join an existing one or create a new one.</p>
                     <h2>Organisations</h2>
-                    <ol>
+                    <ul>
                         {organisations.map((org)=> (
                             <li>{org.name} <button>Edit</button> <button>Join</button></li>
                         ))}
-                    </ol>
+                    </ul>
             
                     <h2>Create Organisation</h2>
                     <form>

@@ -2,10 +2,12 @@ import Login from './pages/login';
 import Signup from './pages/signup';
 import Header from './components/Header';
 import Dashboard from './pages/dashboard';
+import EditOrg from './pages/editOrg';
 import './style.css';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import React from 'react';
 import { useState, useEffect } from "react";
+
 
 /**FIXME: When a person doesn't logout and when the server is started again either it 
 //doesn't show login page (due to sessionId error {sessionId doesn't match}) 
@@ -31,6 +33,7 @@ function App() {
           <Header/>
           <Routes>
             <Route path ="/signup" element={<Signup setIsLoggedIn={setLoggedIn}/>} />
+            <Route path ="organisations/edit" element={<EditOrg isLoggedIn={isLoggedIn}/>} />
             
             {isLoggedIn===null|| isLoggedIn===false ? (
               <Route exact path ="/" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setLoggedIn}/>}/>
