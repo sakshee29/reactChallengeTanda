@@ -1,9 +1,12 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
-export default function Header(){
+function Header(){
     return(
         <header>
-            <a href="#"><h1>Adnat</h1></a>
+            <Link to="/"><h1>Adnat</h1></Link>
         </header>
     );
 }
+
+export default Header;

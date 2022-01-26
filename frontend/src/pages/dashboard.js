@@ -82,6 +82,25 @@ function Dashboard(props){
         )
     }
 
+    function joinOrg(orgId){
+        const url = `${URL}/organisations/join`;
+        sessionId = localStorage.getItem("sessionId");
+
+        return (fetch(url,{
+            method: "POST",
+            headers: {'Authorization': `${sessionId}`, "Content-Type":"application/json"},
+            body: JSON.stringify({"organisationId":2})
+
+        })
+        .then((res)=> res.json())
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((errors)=> {console.log(`Errors: ${errors}`)})
+        )
+
+    }
+
     function getUserDetails(){
         const url = `${URL}/users/me`;
         sessionId = localStorage.getItem("sessionId");
@@ -125,7 +144,7 @@ function Dashboard(props){
                     <h2>Organisations</h2>
                     <ul>
                         {organisations.map((org)=> (
-                            <li>{org.name} <button>Edit</button> <button>Join</button></li>
+                            <li>{org.name} <button>Edit</button> <button onClick={joinOrg}>Join</button></li>
                         ))}
                     </ul>
             
