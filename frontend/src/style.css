@@ -49,6 +49,7 @@ th,td{
 }
 
 #editButton,#leaveOrgButton{
+    /* Source: https://stackoverflow.com/questions/1367409/how-to-make-button-look-like-a-link */
     background: none!important;
     border: none;
     padding: 0!important;

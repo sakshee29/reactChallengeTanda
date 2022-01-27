@@ -9,8 +9,13 @@ function Shifts(props){
 
     const [username, setUserName] = useState("");
     const [usersOrgName, setUsersOrgName] = useState("");
+    const [usersOrgRate, setUsersOrgRate] = useState(null);
+    
     const [organisations, setOrganisations] = useState([]);
     const [organisationId, setOrganisationId] = useState(null);
+
+    /**SHIFTS Variables */
+    const [shiftsArray, setShiftsArray] = useState([]);
 
     function getUserDetails(){
         const url = `${URL}/users/me`;
@@ -58,9 +63,33 @@ function Shifts(props){
         )
     }
 
+    function getShifts(){
+        const url = `${URL}/shifts`;
+        sessionId = localStorage.getItem("sessionId");
+
+        const options = {
+            method: 'GET',
+            headers: {
+            'Authorization': `${sessionId}` ,
+            'Content-Type': 'application/json',
+            }
+        };
+
+        return(fetch(url,options)
+        .then((res)=> res.json())
+        .then((dataArray) => {
+            setShiftsArray(dataArray);
+            console.log(dataArray);
+        })
+        )
+
+
+    }
+
     useEffect(()=>{
         getUserDetails();
         getOrganisations();
+        getShifts();
     })
 
     return(
