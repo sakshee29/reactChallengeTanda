@@ -9,7 +9,7 @@ var sessionId = "";
 
 function Dashboard(props){
     const [username, setUserName] = useState("");
-    const [organisationId, setOrganisationId] = useState(null);
+    const [organisationId, setOrganisationId] = useState(1);
 
     const [orgName, setOrgName] = useState("");
     const [orgRate, setOrgRate] = useState(null);
@@ -67,6 +67,7 @@ function Dashboard(props){
     function getOrganisations(){
         const url = `${URL}/organisations`;
         sessionId = localStorage.getItem("sessionId");
+        console.log("Hey S the id is:",sessionId);
         return(fetch(url,{
                 method:"GET",
                 headers: {'Authorization': `${sessionId}`, "Content-Type":"application/json"},
@@ -76,7 +77,7 @@ function Dashboard(props){
                 
                 setOrganisations(data);
                 setUsersOrgName(data[organisationId-1].name);
-                console.log(data);
+                // console.log(data);
             
             })
         )
@@ -122,7 +123,7 @@ function Dashboard(props){
         .then((res)=>{
             setUserName(res.name);
             setOrganisationId(res.organisationId);
-            console.log("The response is:",res);
+            // console.log("The response is:",res);
         })
         .catch((error)=> {console.log(`Errors: ${error}`)}))
     }
@@ -147,7 +148,7 @@ function Dashboard(props){
                     <h2>Organisations</h2>
                     <ul>
                         {organisations.map((org)=> (
-                            <li>{org.name}  <button id="editButton" value={org.id} onClick={joinOrg}>Join</button></li>
+                            <li key={org.id}>{org.name}  <button id="editButton" value={org.id} onClick={joinOrg}>Join</button></li>
                         ))}
                     </ul>
             
@@ -178,8 +179,8 @@ function Dashboard(props){
                         }}
                         required />
                     </label>
-                    <button onClick={createOrganisation}>Create and Join</button> 
                     </form>
+                    <button onClick={createOrganisation}>Create and Join</button> 
                 </div>)}
             
             </div>

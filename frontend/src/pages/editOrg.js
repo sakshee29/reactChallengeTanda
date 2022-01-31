@@ -8,7 +8,7 @@ var sessionId = "";
 export default function EditOrg(props){
 
     const [username, setUserName] = useState("");
-    const [organisationId, setOrganisationId] = useState(null);
+    const [organisationId, setOrganisationId] = useState(1);
 
    
 
@@ -39,7 +39,7 @@ export default function EditOrg(props){
     function getUserDetails(){
         const url = `${URL}/users/me`;
         sessionId = localStorage.getItem("sessionId");
-        console.log("The id is:", sessionId);
+        // console.log("The id is:", sessionId);
 
         const options = {
             method: 'GET',
@@ -54,7 +54,7 @@ export default function EditOrg(props){
         .then((res)=>{
             setUserName(res.name);
             setOrganisationId(res.organisationId);
-            console.log("The response is:",res);
+            // console.log("The response is:",res);
         })
         .catch((error)=> {console.log(`Errors: ${error}`)}))
     }
@@ -75,9 +75,10 @@ export default function EditOrg(props){
             .then((data)=> {
                 
                 setOrganisations(data);
+                console.log(`The current org is: ${organisationId}`)
                 setUsersOrgName(data[organisationId-1].name);
                 setUsersOrgRate(data[organisationId-1].hourlyRate);
-                console.log(data);
+                // console.log(data);
             })
         )
     }
@@ -129,7 +130,7 @@ export default function EditOrg(props){
                              /> per hour
                         </label>
                         <button onClick={updateOrg}>Update</button> <br></br>
-                    </form>
+                        </form>
                     
                 </div>)}
         </div>

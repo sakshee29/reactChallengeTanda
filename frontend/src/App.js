@@ -20,7 +20,6 @@ or it shows the same person's homepage*/
 function App() {
 
   const [isLoggedIn, setLoggedIn] = useState(null);
-  // localStorage.removeItem("sessionId");
 
   useEffect(() => {
     const loggedUser = localStorage.getItem('sessionId');
