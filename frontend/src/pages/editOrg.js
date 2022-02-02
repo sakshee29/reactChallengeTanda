@@ -10,8 +10,6 @@ export default function EditOrg(props){
     const [username, setUserName] = useState("");
     const [organisationId, setOrganisationId] = useState(1);
 
-   
-
     const [organisations, setOrganisations] = useState([]);
     //Organisation Name for a particular user
     const [usersOrgName, setUsersOrgName] = useState("");
