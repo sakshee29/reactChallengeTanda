@@ -19,6 +19,9 @@ label {
     position: absolute;
     left: 0;
 }
+.success{
+    color: green;
+}
 
 .error{
     color: red;

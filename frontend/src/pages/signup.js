@@ -41,8 +41,8 @@ function Signup(props){
     return(
         <div>
             <h2>Signup</h2>
-            <p className="error">The Error is:- {error}</p>
-            <p>The Id is: {sessionId}</p>
+            {error ? (<p className="error">{error}</p>):(<p></p>)}
+            {sessionId ? (<p className="success">Successfully Signed up. You can now login.</p>):(<p></p>)} 
             
 
             <form>
