@@ -74,7 +74,6 @@ function Signup(props){
 
                 <label className='formLabels'>
                     Password<br></br>
-                    (6 characters minimum)
                 </label>
                 <input 
                 type="password"

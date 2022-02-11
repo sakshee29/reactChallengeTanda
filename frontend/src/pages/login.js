@@ -38,9 +38,8 @@ function Login(props){
     return(
         <div>
             <h2>Login</h2>
-            <p className="error">The Error is:- {error}</p>
-            <p>The Id is: {sessionId}</p>
-
+            <p className="error">{error}</p>
+            
             <form>
                 <label className='formLabels'>
                     Email 
