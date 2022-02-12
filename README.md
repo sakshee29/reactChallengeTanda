@@ -18,4 +18,4 @@ TO START THE SERVER:
 Include View Shifts functionality, Reduce the use of {useEffect}, Improve the navigation code
 
 <h4>Contact</h4>
-For further assistance contact [toshniwalsakshee2002@gmail.com](https://www.facebook.com/)
+For further assistance contact [toshniwalsakshee2002@gmail.com]
