@@ -2,7 +2,7 @@
 
 <h4>About The Project</h4>
 
-This is the solution for the React Challenge given by Tanda. Currently this is a partial solution which let's the user perform basic functionlaities like Signup, Login, Logout, Create & Join an orgranisation, Edit an organitsaion or Leave an orgarnisation. 
+This is the solution for the React Challenge given by Tanda. The backend for this project was already provide and the goal was to develop a react app for the frontend. Currently this is a partial solution which let's the user perform basic functionlaities like Signup, Login, Logout, Create & Join an orgranisation, Edit an organitsaion or Leave an orgarnisation. 
 
 <h4>Usage</h4>
 
