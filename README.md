@@ -7,8 +7,9 @@ This is the solution for the React Challenge given by Tanda. The backend for thi
 <h4>Usage</h4>
 
 1. Clone the repository.
-2. cd into /backend and perform **npm install** to install all the dependencies. 
-3. cd into /frontend and perform **npm install** to install all the dependencies. 
+2. Perform **npm install** in the root of the repository to install all the dependencies. 
+3. cd into /backend and perform **npm install** to install all the dependencies. 
+4. cd into /frontend and perform **npm install** to install all the dependencies. 
 
 TO START THE SERVER:
 1. Open two different terminals.
@@ -19,4 +20,4 @@ TO START THE SERVER:
 Include View Shifts functionality, Reduce the use of {useEffect}, Improve the navigation code
 
 <h4>Contact</h4>
-For further assistance contact [toshniwalsakshee2002@gmail.com]
+For further assistance please contact [toshniwalsakshee2002@gmail.com]
